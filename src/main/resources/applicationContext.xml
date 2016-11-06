@@ -23,6 +23,7 @@
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
         <property name="defaultDestination" ref="destination"/>
+        <property name="messageConverter" ref="personMessageConverter" />
         <!--<property name="timeToLive" value="30000"/>-->
     </bean>
 

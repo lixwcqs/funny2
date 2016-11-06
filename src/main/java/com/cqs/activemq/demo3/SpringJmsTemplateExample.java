@@ -1,11 +1,9 @@
 package com.cqs.activemq.demo3;
 
-import java.net.URISyntaxException;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringJmsTemplateExample {
-    public static void main(String[] args) throws URISyntaxException, Exception {
+    public static void main(String[] args) throws  Exception {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "classpath:applicationContext.xml");
 
