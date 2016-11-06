@@ -1,7 +1,6 @@
 package com.cqs.activemq.demo2;
 
 
-import org.apache.activemq.*;
 import javax.jms.*;
 
 /**
