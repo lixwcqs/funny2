@@ -14,7 +14,7 @@
         <property name="brokerURL" value="tcp://localhost:61616"/>
     </bean>
 
-    <!-- Destination(消息队列) -->
+    <!-- Destination(消息队列)1 -->
     <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg value="dest1" />
     </bean>
