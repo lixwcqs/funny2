@@ -7,6 +7,18 @@
     <groupId>com.cqs</groupId>
     <artifactId>funny2</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-jms -->
@@ -16,6 +28,14 @@
             <version>4.3.3.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.3.RELEASE</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/javax.jms/javax.jms-api -->
         <dependency>
             <groupId>javax.jms</groupId>
@@ -23,19 +43,35 @@
             <version>2.0.1</version>
         </dependency>
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.activemq/activemq-all &ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.activemq</groupId>-->
-        <!--<artifactId>activemq-all</artifactId>-->
-        <!--<version>5.14.1</version>-->
-        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-all -->
+        <dependency>
+        <groupId>org.apache.activemq</groupId>
+        <artifactId>activemq-all</artifactId>
+        <version>5.14.1</version>
+        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-core -->
+        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-pool -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>5.7.0</version>
+            <artifactId>activemq-pool</artifactId>
+            <version>5.14.1</version>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.activemq/activemq-core &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.activemq</groupId>-->
+        <!--<artifactId>activemq-core</artifactId>-->
+        <!--<version>5.7.0</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 

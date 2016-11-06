@@ -6,14 +6,18 @@ import javax.jms.JMSException;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+
+/**
+ * 需要在ApplicationContext.xml中的JmsTemplate中配置默认消息队列
+ */
 @Component
 public class SpringJmsPersonConsumer {
 
-	@Resource
-	private JmsTemplate jmsTemplate;
+    @Resource
+    private JmsTemplate jmsTemplate;
 
-	public Person receiveMessage() throws JMSException {
-		Person person = (Person) jmsTemplate.receiveAndConvert();
-		return person;	
-	}
+    public Person receiveMessage() throws JMSException {
+        Person person = (Person) jmsTemplate.receiveAndConvert();
+        return person;
+    }
 }

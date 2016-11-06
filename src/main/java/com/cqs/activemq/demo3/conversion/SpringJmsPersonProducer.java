@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
+/**
+ * 需要在ApplicationContext.xml中的JmsTemplate中配置默认消息队列
+ *
+ */
 @Component
 public class SpringJmsPersonProducer {
 

@@ -16,14 +16,38 @@
 
     <!-- Destination(消息队列)1 -->
     <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg value="dest1" />
+        <constructor-arg value="dest1"/>
     </bean>
 
-    <!--消息工具类-->
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <!-- 消息模式（点到点） -->
+    <bean id="destination2" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="dest2"/>
+    </bean>
+
+    <!-- 消息模式（订阅模式） -->
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="topic1"/>
+    </bean>
+
+    <!-- a pooling based JMS provider -->
+    <bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
         <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+
+    <!--同步消息处理工具类 -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+        <property name="connectionFactory" ref="jmsFactory"/>
+        <!---->
+        <property name="deliveryPersistent" value="true"/>
+        <!-- 进行持久化 -->
+        <!--订阅 发布模式 【默认为点到点模式】-->
+        <property name="pubSubDomain" value="true" />
+        <property name="deliveryMode" value="2"/>
+        <!--默认队列-->
         <property name="defaultDestination" ref="destination"/>
-        <property name="messageConverter" ref="personMessageConverter" />
+
+        <property name="messageConverter" ref="personMessageConverter"/>
         <!--<property name="timeToLive" value="30000"/>-->
     </bean>
 
