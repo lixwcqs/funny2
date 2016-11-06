@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byName">
+
+    <context:component-scan base-package="com.cqs"/>
+
+    <!--https://examples.javacodegeeks.com/enterprise-java/spring/spring-framework-jmstemplate-example/-->
+
+    <!--connectionFactory-->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+
+    <!-- Destination(消息队列) -->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="dest1" />
+    </bean>
+
+    <!--消息工具类-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="destination"/>
+        <!--<property name="timeToLive" value="30000"/>-->
+    </bean>
+
+</beans>
