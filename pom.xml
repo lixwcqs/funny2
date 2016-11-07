@@ -65,13 +65,20 @@
             <version>2.4.2</version>
         </dependency>
 
-
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.activemq/activemq-core &ndash;&gt;-->
         <!--<dependency>-->
         <!--<groupId>org.apache.activemq</groupId>-->
         <!--<artifactId>activemq-core</artifactId>-->
         <!--<version>5.7.0</version>-->
         <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.7</version>
+        </dependency>
+
 
     </dependencies>
 
