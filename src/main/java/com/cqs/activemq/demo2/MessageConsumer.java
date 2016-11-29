@@ -1,9 +1,8 @@
 package com.cqs.activemq.demo2;
 
-import org.apache.activemq.*;
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import javax.jms.Message;
 
 /**
  * Created by cloud on 16-11-5.

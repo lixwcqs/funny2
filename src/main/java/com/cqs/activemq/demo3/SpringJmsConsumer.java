@@ -1,10 +1,12 @@
 package com.cqs.activemq.demo3;
 
-import javax.annotation.Resource;
-import javax.jms.*;
-
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.TextMessage;
 
 @Component
 public class SpringJmsConsumer {

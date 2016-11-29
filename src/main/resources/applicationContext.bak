@@ -7,24 +7,43 @@
 
     <context:component-scan base-package="com.cqs"/>
 
+    <tx:annotation-driven transaction-manager="transactionManagement"/>
 
     <bean id="targetConnectionFactory" name="targetConnectionFactory"
           class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="tcp://localhost:61616"/>
     </bean>
 
+    <!--https://examples.javacodegeeks.com/enterprise-java/spring/spring-framework-jmstemplate-example/-->
+    <!--<bean id="connectionFactory"  name="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">-->
+    <!--<constructor-arg name="targetConnectionFactory" ref="targetConnectionFactory"/>-->
     <bean id="connectionFactory" name="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
         <property name="connectionFactory" ref="targetConnectionFactory"/>
     </bean>
 
-    <bean id="transactionManagement" class="org.springframework.jms.connection.JmsTransactionManager">
-        <property name="connectionFactory" ref="connectionFactory"/>
+    <!-- Destination(消息队列)1 -->
+    <bean id="articleQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="article"/>
     </bean>
+
+    <!-- 消息模式（订阅模式） -->
+    <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="topic1"/>
+    </bean>
+
+    <!--<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">-->
+    <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+    <!--<property name="destination" ref="articleQueue"/>-->
+    <!--<property name="messageListener" ref="reader"/>-->
+    <!--</bean>-->
 
     <bean id="t1" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg value="t1"/>
     </bean>
 
+    <bean id="transactionManagement" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
 
     <bean id="jmsContainer3" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="errorHandler" ref="jmsErrorHandler"/>
@@ -32,8 +51,6 @@
         <property name="messageListener" ref="jmsReceiver"/>
         <property name="destination" ref="t1"/>
         <property name="pubSubDomain" value="false"/>
-        <property name="transactionManager" ref="transactionManagement"/>
-        <property name="sessionTransacted" value="true"/>
     </bean>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
@@ -43,6 +60,4 @@
         <property name="sessionTransacted" value="true"/>
         <property name="pubSubDomain" value="false"/>
     </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManagement"/>
 </beans>
