@@ -42,6 +42,7 @@
         <property name="deliveryPersistent" value="true"/>
         <property name="sessionTransacted" value="true"/>
         <property name="pubSubDomain" value="false"/>
+        <property name="deliveryMode" value="2"/>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManagement"/>

@@ -14,6 +14,6 @@ public class JmsReceiver implements MessageListener {
     @Override
     public void onMessage(Message message) {
         System.out.println("接受消息:\t" + message);
-        throw new RuntimeException("error");
+//        throw new RuntimeException("error");
     }
 }
