@@ -7,9 +7,8 @@ package com.cqs.jvm;
  * -Xmx8m
  * -Xms8m
  * Created by cloud on 16-12-10.
+ *
  */
-
-
 public class ReferenceCountingGC {
     private Object intance = null;
 
