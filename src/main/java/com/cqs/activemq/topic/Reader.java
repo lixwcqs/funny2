@@ -10,17 +10,22 @@ import javax.jms.TextMessage;
 import java.util.Random;
 
 /**
+ * 异步
  * Created by cqs on 11/7/16.
  */
 @Scope("prototype")
 @Component
 public class Reader implements MessageListener {
-    private static int count =0;
     private final int id;
 
     public Reader() {
         this.id = new Random().nextInt(1000);
     }
+
+    public Reader(int id) {
+        this.id = id;
+    }
+
 
     @Override
     public void onMessage(Message message) {

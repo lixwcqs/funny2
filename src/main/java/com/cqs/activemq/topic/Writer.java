@@ -1,8 +1,5 @@
 package com.cqs.activemq.topic;
 
-import org.apache.activemq.command.ActiveMQQueue;
-import org.apache.activemq.command.ActiveMQTempTopic;
-import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
@@ -23,6 +20,7 @@ public class Writer {
     //
     @Autowired
     @Qualifier("articleQueue")
+//    @Qualifier("destination")
     private Destination destination;
 
     private Article article;
@@ -34,6 +32,7 @@ public class Writer {
 
     public void publishArticle() {
         Assert.notNull(article);
+//        System.out.println(destination);
         jmsTemplate.send(destination, (session) -> {
             return session.createTextMessage(article.getTitle());
         });
