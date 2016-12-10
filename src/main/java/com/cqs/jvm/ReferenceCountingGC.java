@@ -1,4 +1,4 @@
-package com.cqs.commons.util;
+package com.cqs.jvm;
 
 /**
  * -XX:+PrintGCDetails
