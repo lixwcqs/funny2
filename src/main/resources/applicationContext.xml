@@ -7,6 +7,11 @@
 
     <context:component-scan base-package="com.cqs"/>
 
+    <bean name="/Calculation.http"
+          class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="calculationBean"></property>
+        <property name="serviceInterface" value="com.javatpoint.Calculation"></property>
+    </bean>
 
     <bean id="targetConnectionFactory" name="targetConnectionFactory"
           class="org.apache.activemq.ActiveMQConnectionFactory">
